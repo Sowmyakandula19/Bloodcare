@@ -63,6 +63,9 @@ def about():
 # Temporary only once run cheyyi
 # Temporary: Ensure donors table exists with all required columns
 # Temporary snippet: run once in Flask app
+# ===============================
+# TEMPORARY TABLE CREATION (ONE-TIME)
+# ===============================
 try:
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS donors (
@@ -78,10 +81,10 @@ try:
             city VARCHAR(50)
         )
     """)
-    conn.commit()
-    print("Donors table ensured with all required columns!")
+    db.commit()  # <-- db.commit() instead of conn.commit()
+    print("✅ Donors table ensured with all required columns!")
 except Exception as e:
-    print("Error ensuring donors table:", e)
+    print("❌ Error ensuring donors table:", e)
 
 @app.route("/register_donor", methods=["POST"])
 def register_donor():
