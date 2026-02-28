@@ -62,6 +62,7 @@ def about():
 # ===============================
 # Temporary only once run cheyyi
 # Temporary: Ensure donors table exists with all required columns
+# Temporary snippet: run once in Flask app
 try:
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS donors (
