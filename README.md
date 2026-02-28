@@ -19,14 +19,17 @@ Blood Donation Management System is a web-based platform that allows users to re
 🧩 Flask-CORS
 🚀 Railway Deployment
 
-🌐 Deployment Link:bloodcare-production.up.railway.app
+🌐 Deployment Link:
+https://bloodcare-production.up.railway.app/
 
 
 
 👩‍💻 Created By
 
 Kandula Sowmya
+
 G.V. Sindhu
+
 M.Rena
 
 📂 Database Structure
