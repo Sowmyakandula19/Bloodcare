@@ -146,24 +146,24 @@ def search_donors():
 
     try:
         query = """
-            SELECT donor_id, name, age, gender, blood_group, contact, email, state, city
+            SELECT id, name, age, gender, blood_group, contact, email, state, city
             FROM donors
             WHERE blood_group = %s
             AND state = %s
             AND city = %s
-            ORDER BY donor_id DESC
+            ORDER BY id DESC
         """
 
-        values = (blood, state, city)
+        values = (blood.strip(), state.strip(), city.strip())
 
         cursor.execute(query, values)
         donors = cursor.fetchall()
 
         return jsonify(donors)
 
-    except Error:
-        return jsonify([])
-
+    except Error as e:
+        print("Search Donors Error:", e)
+        return jsonify([])  # return empty list instead of nothing
 # ===============================
 
 if __name__ == "__main__":
