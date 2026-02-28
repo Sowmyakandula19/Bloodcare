@@ -1,9 +1,10 @@
 🩸 Blood Donation Management System
 
-📖 Description
+📖 Description:
+
 Blood Donation Management System is a web-based platform that allows users to register as blood donors, search for donors by blood group and location, submit blood requests, and manage blood inventory efficiently. It provides a user-friendly interface for donors, hospitals, and administrators.
 
-✨ Features
+✨ Features:
 🧑‍🤝‍🧑 Donor registration with personal details and blood group
 🔍 Search for donors by blood group, state, and city
 🏥 Submit blood requests and track inventory
@@ -11,23 +12,22 @@ Blood Donation Management System is a web-based platform that allows users to re
 🎨 Responsive and user-friendly design
 🔗 JSON API for frontend integration
 
-🛠️ Technologies Used
+🛠️ Technologies Used:
 🐍 Python (Flask)
 💾 MySQL
 🌐 HTML, CSS, JavaScript
 🧩 Flask-CORS
 🚀 Railway Deployment
 
-🌐 Deployment Link
-(Your live deployment URL here)
-Example: https://blood-donation-railway.up.railway.app
+🌐 Deployment Link:bloodcare-production.up.railway.app
+
+
 
 👩‍💻 Created By
-Gorle Lakshmi Lavanya
+
 Kandula Sowmya
-Kona Janani
 G.V. Sindhu
-Gorji Moukhika
+M.Rena
 
 📂 Database Structure
 
@@ -38,6 +38,9 @@ Requests Table: request_id, patient_name, blood_group, units_needed, hospital, c
 Blood Inventory Table: blood_group, units_available
 
 🛣️ How It Works (Workflow)
+
 1️⃣ Donor Registration: User fills form → Backend validates → Data stored in MySQL → Success message
+
 2️⃣ Search Donors: User inputs blood, state, city → Backend queries donors table → Returns matching donors
+
 3️⃣ Blood Requests & Inventory: Hospital submits request → Stored in requests table → Update blood_inventory table
