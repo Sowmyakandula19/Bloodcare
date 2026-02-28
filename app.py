@@ -60,6 +60,14 @@ def about():
 # ===============================
 # REGISTER DONOR API
 # ===============================
+# Temporary only once run cheyyi
+try:
+    cursor.execute("ALTER TABLE donors ADD COLUMN gender VARCHAR(10)")
+    conn.commit()
+    print("Gender column added!")
+except Exception as e:
+    print("Column may already exist:", e)
+
 @app.route("/register_donor", methods=["POST"])
 def register_donor():
 
