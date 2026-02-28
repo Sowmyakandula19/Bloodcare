@@ -67,12 +67,21 @@ def about():
 # TEMPORARY TABLE CREATION (ONE-TIME)
 # ===============================
 # Temporary: Add missing 'contact' column if not exists
-try:
-    cursor.execute("ALTER TABLE donors ADD contact VARCHAR(15)")
-    db.commit()
-    print("✅ Contact column added successfully!")
-except Exception as e:
-    print("⚠️ Contact column may already exist or error:", e)
+# Temporary: Add missing columns safely (one-time run)
+columns_to_add = {
+    
+    "country": "VARCHAR(50)",
+    "state": "VARCHAR(50)",
+    "city": "VARCHAR(50)"
+}
+
+for col, col_type in columns_to_add.items():
+    try:
+        cursor.execute(f"ALTER TABLE donors ADD {col} {col_type}")
+        db.commit()
+        print(f"✅ Column '{col}' added successfully!")
+    except Exception as e:
+        print(f"⚠️ Column '{col}' may already exist or error:", e)
 
 @app.route("/register_donor", methods=["POST"])
 def register_donor():
