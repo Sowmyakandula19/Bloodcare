@@ -62,11 +62,21 @@ def about():
 # ===============================
 # Temporary only once run cheyyi
 try:
-    cursor.execute("ALTER TABLE donors ADD COLUMN gender VARCHAR(10)")
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS donors (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(100),
+            email VARCHAR(100) UNIQUE,
+            age INT,
+            gender VARCHAR(10),
+            blood_group VARCHAR(10),
+            password VARCHAR(255)
+        )
+    """)
     conn.commit()
-    print("Gender column added!")
+    print("Donors table ensured!")
 except Exception as e:
-    print("Column may already exist:", e)
+    print("Error creating table:", e)
 
 @app.route("/register_donor", methods=["POST"])
 def register_donor():
