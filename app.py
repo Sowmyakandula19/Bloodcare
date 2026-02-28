@@ -144,4 +144,5 @@ def search_donors():
 # ===============================
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=False)
+    port = int(os.environ.get("PORT", 5000))  # Railway sets PORT automatically
+    app.run(host="0.0.0.0", port=port, debug=False)
