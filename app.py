@@ -66,25 +66,13 @@ def about():
 # ===============================
 # TEMPORARY TABLE CREATION (ONE-TIME)
 # ===============================
+# Temporary: Add missing 'contact' column if not exists
 try:
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS donors (
-            donor_id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100),
-            age INT,
-            gender VARCHAR(10),
-            blood_group VARCHAR(5),
-            contact VARCHAR(15),
-            email VARCHAR(100),
-            country VARCHAR(50),
-            state VARCHAR(50),
-            city VARCHAR(50)
-        )
-    """)
-    db.commit()  # <-- db.commit() instead of conn.commit()
-    print("✅ Donors table ensured with all required columns!")
+    cursor.execute("ALTER TABLE donors ADD contact VARCHAR(15)")
+    db.commit()
+    print("✅ Contact column added successfully!")
 except Exception as e:
-    print("❌ Error ensuring donors table:", e)
+    print("⚠️ Contact column may already exist or error:", e)
 
 @app.route("/register_donor", methods=["POST"])
 def register_donor():
