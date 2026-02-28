@@ -61,22 +61,26 @@ def about():
 # REGISTER DONOR API
 # ===============================
 # Temporary only once run cheyyi
+# Temporary: Ensure donors table exists with all required columns
 try:
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS donors (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            donor_id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(100),
-            email VARCHAR(100) UNIQUE,
             age INT,
             gender VARCHAR(10),
-            blood_group VARCHAR(10),
-            password VARCHAR(255)
+            blood_group VARCHAR(5),
+            contact VARCHAR(15),
+            email VARCHAR(100),
+            country VARCHAR(50),
+            state VARCHAR(50),
+            city VARCHAR(50)
         )
     """)
     conn.commit()
-    print("Donors table ensured!")
+    print("Donors table ensured with all required columns!")
 except Exception as e:
-    print("Error creating table:", e)
+    print("Error ensuring donors table:", e)
 
 @app.route("/register_donor", methods=["POST"])
 def register_donor():
